@@ -1,0 +1,60 @@
+{% extends 'aprendizaje/base.html' %}
+
+{% block title %}Módulos{% endblock %}
+
+{% block content %}
+
+<h2>Listado de Módulos</h2>
+
+<a href="{% url 'crear_modulo' %}">
+    <button>Nuevo módulo</button>
+</a>
+
+<br><br>
+
+<table border="1" cellpadding="10">
+
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+    </tr>
+
+    {% for modulo in modulos %}
+
+    <tr>
+
+        <td>{{ modulo.id }}</td>
+        <td>{{ modulo.nombre }}</td>
+        <td>{{ modulo.descripcion }}</td>
+
+        <td>
+
+            <a href="{% url 'editar_modulo' modulo.id %}">
+                Editar
+            </a>
+
+            |
+
+            <a href="{% url 'eliminar_modulo' modulo.id %}">
+                Eliminar
+            </a>
+
+        </td>
+
+    </tr>
+
+    {% empty %}
+
+    <tr>
+        <td colspan="4">
+            No hay módulos registrados.
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

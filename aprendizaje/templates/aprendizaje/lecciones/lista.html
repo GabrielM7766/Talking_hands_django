@@ -1,0 +1,66 @@
+{% extends 'aprendizaje/base.html' %}
+
+{% block title %}Lecciones{% endblock %}
+
+{% block content %}
+
+<h2>Listado de Lecciones</h2>
+
+<a href="{% url 'crear_leccion' %}">
+    <button>Nueva lección</button>
+</a>
+
+<br><br>
+
+<table border="1" cellpadding="10">
+
+    <tr>
+        <th>ID</th>
+        <th>Módulo</th>
+        <th>Título</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+    </tr>
+
+    {% for leccion in lecciones %}
+
+    <tr>
+
+        <td>{{ leccion.id }}</td>
+        <td>{{ leccion.modulo.nombre }}</td>
+        <td>{{ leccion.titulo }}</td>
+        <td>{{ leccion.descripcion }}</td>
+
+        <td>
+
+            <a href="{% url 'editar_leccion' leccion.id %}">
+                Editar
+            </a>
+
+            |
+
+            <a href="{% url 'eliminar_leccion' leccion.id %}">
+                Eliminar
+            </a>
+
+        </td>
+
+    </tr>
+
+    {% empty %}
+
+    <tr>
+
+        <td colspan="5">
+
+            No hay lecciones registradas.
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

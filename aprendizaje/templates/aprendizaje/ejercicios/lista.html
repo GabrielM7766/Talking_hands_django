@@ -1,0 +1,66 @@
+{% extends 'aprendizaje/base.html' %}
+
+{% block title %}Ejercicios{% endblock %}
+
+{% block content %}
+
+<h2>Listado de Ejercicios</h2>
+
+<a href="{% url 'crear_ejercicio' %}">
+    <button>Nuevo Ejercicio</button>
+</a>
+
+<br><br>
+
+<table border="1" cellpadding="10">
+
+<tr>
+    <th>ID</th>
+    <th>Lección</th>
+    <th>Pregunta</th>
+    <th>Respuesta</th>
+    <th>Acciones</th>
+</tr>
+
+{% for ejercicio in ejercicios %}
+
+<tr>
+
+    <td>{{ ejercicio.id }}</td>
+    <td>{{ ejercicio.leccion.titulo }}</td>
+    <td>{{ ejercicio.pregunta }}</td>
+    <td>{{ ejercicio.respuesta }}</td>
+
+    <td>
+
+        <a href="{% url 'editar_ejercicio' ejercicio.id %}">
+            Editar
+        </a>
+
+        |
+
+        <a href="{% url 'eliminar_ejercicio' ejercicio.id %}">
+            Eliminar
+        </a>
+
+    </td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+<td colspan="5">
+
+No existen ejercicios.
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

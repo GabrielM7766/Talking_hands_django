@@ -1,0 +1,27 @@
+{% extends 'aprendizaje/base.html' %}
+
+{% block title %}Seña{% endblock %}
+
+{% block content %}
+
+<h2>Formulario de Seña</h2>
+
+<form method="POST" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    {{ formulario.as_p }}
+
+    <button type="submit">
+        Guardar
+    </button>
+
+</form>
+
+<br>
+
+<a href="{% url 'lista_senas' %}">
+    Volver
+</a>
+
+{% endblock %}

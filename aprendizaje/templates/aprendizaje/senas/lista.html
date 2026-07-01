@@ -1,0 +1,46 @@
+{% extends 'aprendizaje/base.html' %}
+
+{% block title %}Señas{% endblock %}
+
+{% block content %}
+
+<h2>Listado de Señas</h2>
+
+<a href="{% url 'crear_sena' %}">
+    <button>Nueva Seña</button>
+</a>
+
+<br><br>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Lección</th>
+        <th>Acciones</th>
+    </tr>
+
+    {% for sena in senas %}
+    <tr>
+        <td>{{ sena.id }}</td>
+        <td>{{ sena.nombre }}</td>
+        <td>{{ sena.descripcion }}</td>
+
+        <td>{{ sena.leccion.titulo }}</td>
+
+        <td>
+            <a href="{% url 'editar_sena' sena.id %}">Editar</a> |
+            <a href="{% url 'eliminar_sena' sena.id %}">Eliminar</a>
+        </td>
+    </tr>
+
+    {% empty %}
+    <tr>
+        <td colspan="6">No existen señas.</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

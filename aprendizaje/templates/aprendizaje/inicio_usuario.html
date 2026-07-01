@@ -1,0 +1,38 @@
+{% extends 'aprendizaje/base.html' %}
+
+{% block title %}
+Inicio
+{% endblock %}
+
+{% block content %}
+
+<h2>Bienvenido a Talking Hands</h2>
+
+<p>Aplicativo para el aprendizaje de lengua de señas.</p>
+
+<h3>Menú principal</h3>
+
+<ul>
+    <li>
+        <a href="{% url 'lista_modulos' %}">
+            Administrar módulos
+        </a>
+    </li>
+    <li>
+    <a href="{% url 'lista_lecciones' %}">
+        Administrar lecciones
+    </a>
+    </li>
+    <li>
+        <a href="{% url 'lista_senas' %}">
+            Administrar señas
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'lista_ejercicios' %}">
+            Administrar ejercicios
+        </a>
+    </li>
+</ul>
+
+{% endblock %}

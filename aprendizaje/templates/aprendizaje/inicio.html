@@ -1,0 +1,20 @@
+{% extends 'aprendizaje/base.html' %}
+{% load static %}
+
+{% block title %}
+Inicio
+{% endblock %}
+
+{% block content %}
+
+<div class="welcome-container">
+    <div class="logo-circle">
+        <img src="{% static 'img/logo.png' %}" alt="Logo" class="logo-image">
+
+    </div>
+
+<h1 class="welcome-title">Bienvenido a Talking Hands</h1>
+<p class="welcome-subtitle">Aplicativo para el aprendizaje de lengua de señas.</p>
+</div>
+
+{% endblock %}
